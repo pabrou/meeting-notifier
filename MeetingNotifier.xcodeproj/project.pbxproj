@@ -10,6 +10,10 @@
 		A8D90DEF22B9580D00D0F7F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D90DEE22B9580D00D0F7F3 /* AppDelegate.swift */; };
 		A8D90DF122B9581000D0F7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8D90DF022B9581000D0F7F3 /* Assets.xcassets */; };
 		A8D90DF422B9581000D0F7F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D90DF222B9581000D0F7F3 /* MainMenu.xib */; };
+		A8D90DFD22B9591500D0F7F3 /* MeetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D90DFC22B9591500D0F7F3 /* MeetingService.swift */; };
+		A8D90DFF22B95C0900D0F7F3 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D90DFE22B95C0900D0F7F3 /* StatusMenuController.swift */; };
+		A8D90E0422B95E5E00D0F7F3 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D90E0222B95E5E00D0F7F3 /* PreferencesWindowController.swift */; };
+		A8D90E0522B95E5E00D0F7F3 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D90E0322B95E5E00D0F7F3 /* PreferencesWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		A8D90DF322B9581000D0F7F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A8D90DF522B9581000D0F7F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8D90DF622B9581000D0F7F3 /* MeetingNotifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingNotifier.entitlements; sourceTree = "<group>"; };
+		A8D90DFC22B9591500D0F7F3 /* MeetingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingService.swift; sourceTree = "<group>"; };
+		A8D90DFE22B95C0900D0F7F3 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		A8D90E0222B95E5E00D0F7F3 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		A8D90E0322B95E5E00D0F7F3 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,10 @@
 				A8D90DF222B9581000D0F7F3 /* MainMenu.xib */,
 				A8D90DF522B9581000D0F7F3 /* Info.plist */,
 				A8D90DF622B9581000D0F7F3 /* MeetingNotifier.entitlements */,
+				A8D90DFC22B9591500D0F7F3 /* MeetingService.swift */,
+				A8D90DFE22B95C0900D0F7F3 /* StatusMenuController.swift */,
+				A8D90E0222B95E5E00D0F7F3 /* PreferencesWindowController.swift */,
+				A8D90E0322B95E5E00D0F7F3 /* PreferencesWindowController.xib */,
 			);
 			path = MeetingNotifier;
 			sourceTree = "<group>";
@@ -92,6 +104,11 @@
 				TargetAttributes = {
 					A8D90DEA22B9580D00D0F7F3 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -118,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D90E0522B95E5E00D0F7F3 /* PreferencesWindowController.xib in Resources */,
 				A8D90DF122B9581000D0F7F3 /* Assets.xcassets in Resources */,
 				A8D90DF422B9581000D0F7F3 /* MainMenu.xib in Resources */,
 			);
@@ -130,7 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D90DFF22B95C0900D0F7F3 /* StatusMenuController.swift in Sources */,
 				A8D90DEF22B9580D00D0F7F3 /* AppDelegate.swift in Sources */,
+				A8D90E0422B95E5E00D0F7F3 /* PreferencesWindowController.swift in Sources */,
+				A8D90DFD22B9591500D0F7F3 /* MeetingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
