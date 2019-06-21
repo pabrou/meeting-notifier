@@ -25,7 +25,7 @@ class StatusMenuController: NSObject {
         statusBarItem.menu = statusBarMenu
         
         meetingService.delegate = self
-        setMeetingInProgress(inProgress: meetingInProgress)
+        setMeetingInProgress(inProgress: meetingInProgress, showAlert: false)
         meetingService.requestStatusCheck()
         
 //        statusBarMenu.addItem(
@@ -40,7 +40,7 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func alertMeetingClicked(_ sender: Any) {
-        setMeetingInProgress(inProgress: !meetingInProgress)
+        setMeetingInProgress(inProgress: !meetingInProgress, showAlert: false)
         
         meetingService.send(inProgress: meetingInProgress)
     }
@@ -54,12 +54,27 @@ class StatusMenuController: NSObject {
         NSApplication.shared.terminate(self)
     }
     
-    func setMeetingInProgress(inProgress: Bool) {
+    func setMeetingInProgress(inProgress: Bool, showAlert: Bool) {
+        
+        let notification = NSUserNotification()
+        notification.soundName = NSUserNotificationDefaultSoundName
+        
         if inProgress {
-            statusBarItem.button?.title = "🔴"
+            statusBarItem.button?.title = "🤬"
+            
+            notification.title = "Meeting has started"
+            notification.informativeText = "Shhhh... hay una meeting cerca, no griten!!"
         } else {
-            statusBarItem.button?.title = "🙂"
+            statusBarItem.button?.title = "😃"
+            
+            notification.title = "Meeting has ended"
+            notification.informativeText = "Ya pueden hablar a los gritos sin problema"
         }
+        
+//        if showAlert {
+            NSUserNotificationCenter.default.deliver(notification)
+//        }
+
         self.meetingInProgress = inProgress
     }
 }
@@ -75,7 +90,7 @@ extension StatusMenuController : MeetingServiceDelegate {
     
     func meetingStatusChanged(manager: MeetingService, inProgress: Bool) {
         OperationQueue.main.addOperation {
-            self.setMeetingInProgress(inProgress: inProgress)
+            self.setMeetingInProgress(inProgress: inProgress, showAlert: true)
         }
     }
     

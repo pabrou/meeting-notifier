@@ -54,9 +54,11 @@ class MeetingService : NSObject {
         NSLog("%@", "inProgress: \(inProgress) to \(session.connectedPeers.count) peers")
         
         if session.connectedPeers.count > 0 {
-            let data = inProgress ? "meetingOn".data(using: .utf8) : "meetingOff".data(using: .utf8)
+            let meeting = Meeting(id: computerIdentifier())
+            let message = NotifierMessage(action: inProgress ? .meetingOn : .meetingOff, meeting: meeting)
+            
             do {
-                try self.session.send(data!, toPeers: session.connectedPeers, with: .reliable)
+                try self.session.send(message.data(), toPeers: session.connectedPeers, with: .reliable)
             }
             catch let error {
                 NSLog("%@", "Error for sending: \(error)")
@@ -66,9 +68,10 @@ class MeetingService : NSObject {
     
     func requestStatusCheck() {
         if session.connectedPeers.count > 0 {
-            let data = "statusRequest".data(using: .utf8)
+            let message = NotifierMessage(action: .statusRequest, meeting: nil)
+            
             do {
-                try self.session.send(data!, toPeers: session.connectedPeers, with: .reliable)
+                try self.session.send(message.data(), toPeers: session.connectedPeers, with: .reliable)
             }
             catch let error {
                 NSLog("%@", "Error for sending: \(error)")
@@ -76,10 +79,23 @@ class MeetingService : NSObject {
         }
     }
     
+}
+
+extension MeetingService {
+    
     private func computerIdentifier() -> String {
-        return SCDynamicStoreCopyComputerName(nil, nil) as String? ?? "";
+        let computerName = SCDynamicStoreCopyComputerName(nil, nil) as String? ?? "";
+        return "\(computerName)_\(randomId())"
     }
     
+    private func randomId() -> String {
+        return randomString(length: 5)
+    }
+    
+    private func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
 }
 
 extension MeetingService : MCNearbyServiceAdvertiserDelegate {
@@ -121,12 +137,24 @@ extension MeetingService : MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data)")
-        let strData = String(data: data, encoding: .utf8)!
         
-        if strData == "statusRequest" {
-            self.send(inProgress: meetingInProgress)
-        } else {
-            self.delegate?.meetingStatusChanged(manager: self, inProgress: strData == "meetingOn")
+        do {
+            let message = try JSONDecoder().decode(NotifierMessage.self, from: data)
+        
+            switch message.action {
+            case .statusRequest:
+                self.send(inProgress: meetingInProgress)
+                break
+            case .meetingOn:
+                self.delegate?.meetingStatusChanged(manager: self, inProgress: true)
+                break
+            default:
+                self.delegate?.meetingStatusChanged(manager: self, inProgress: false)
+                break
+            }
+            
+        } catch {
+           NSLog("%@", "error deserializing data")
         }
     }
     

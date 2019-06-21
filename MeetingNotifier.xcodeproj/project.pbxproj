@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A832D4AB22BD56CA006C77F2 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A832D4AA22BD56CA006C77F2 /* MeetingManager.swift */; };
+		A832D4AD22BD5ACD006C77F2 /* NotifierMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A832D4AC22BD5ACD006C77F2 /* NotifierMessage.swift */; };
 		A8D90DEF22B9580D00D0F7F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D90DEE22B9580D00D0F7F3 /* AppDelegate.swift */; };
 		A8D90DF122B9581000D0F7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8D90DF022B9581000D0F7F3 /* Assets.xcassets */; };
 		A8D90DF422B9581000D0F7F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D90DF222B9581000D0F7F3 /* MainMenu.xib */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A832D4AA22BD56CA006C77F2 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
+		A832D4AC22BD5ACD006C77F2 /* NotifierMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifierMessage.swift; sourceTree = "<group>"; };
 		A8D90DEB22B9580D00D0F7F3 /* MeetingNotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D90DEE22B9580D00D0F7F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D90DF022B9581000D0F7F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				A8D90DFE22B95C0900D0F7F3 /* StatusMenuController.swift */,
 				A8D90E0222B95E5E00D0F7F3 /* PreferencesWindowController.swift */,
 				A8D90E0322B95E5E00D0F7F3 /* PreferencesWindowController.xib */,
+				A832D4AA22BD56CA006C77F2 /* MeetingManager.swift */,
+				A832D4AC22BD5ACD006C77F2 /* NotifierMessage.swift */,
 			);
 			path = MeetingNotifier;
 			sourceTree = "<group>";
@@ -149,9 +155,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8D90DFF22B95C0900D0F7F3 /* StatusMenuController.swift in Sources */,
+				A832D4AB22BD56CA006C77F2 /* MeetingManager.swift in Sources */,
 				A8D90DEF22B9580D00D0F7F3 /* AppDelegate.swift in Sources */,
 				A8D90E0422B95E5E00D0F7F3 /* PreferencesWindowController.swift in Sources */,
 				A8D90DFD22B9591500D0F7F3 /* MeetingService.swift in Sources */,
+				A832D4AD22BD5ACD006C77F2 /* NotifierMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
