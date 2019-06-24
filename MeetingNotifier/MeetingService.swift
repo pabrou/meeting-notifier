@@ -81,6 +81,7 @@ class MeetingService : NSObject {
     
 }
 
+// MARK: extension for generating identifiers and random ids.
 extension MeetingService {
     
     private func computerIdentifier() -> String {
@@ -168,6 +169,10 @@ extension MeetingService : MCSessionDelegate {
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
         NSLog("%@", "didFinishReceivingResourceWithName")
+    }
+    
+    func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
+        certificateHandler(true);
     }
 }
 

@@ -11,6 +11,8 @@ import Cocoa
 class StatusMenuController: NSObject {
     
     @IBOutlet weak var statusBarMenu: NSMenu!
+    @IBOutlet weak var meetingBarItem: NSMenuItem!
+    @IBOutlet weak var preferencesBarItem: NSMenuItem!
     
     var statusBarItem: NSStatusItem!
     
@@ -39,7 +41,7 @@ class StatusMenuController: NSObject {
 //            keyEquivalent: "")
     }
     
-    @IBAction func alertMeetingClicked(_ sender: Any) {
+    @IBAction func toggleMeetingClicked(_ sender: Any) {
         setMeetingInProgress(inProgress: !meetingInProgress, showAlert: false)
         
         meetingService.send(inProgress: meetingInProgress)
@@ -60,20 +62,20 @@ class StatusMenuController: NSObject {
         notification.soundName = NSUserNotificationDefaultSoundName
         
         if inProgress {
-            statusBarItem.button?.title = "🤬"
-            
+            statusBarItem.button?.title = "🔥"
+            meetingBarItem.title = "Toggle meeting OFF"
             notification.title = "Meeting has started"
             notification.informativeText = "Shhhh... hay una meeting cerca, no griten!!"
         } else {
-            statusBarItem.button?.title = "😃"
-            
+            statusBarItem.button?.title = "🗣️"
+            meetingBarItem.title = "Toggle meeting ON"
             notification.title = "Meeting has ended"
             notification.informativeText = "Ya pueden hablar a los gritos sin problema"
         }
         
-//        if showAlert {
+        if showAlert {
             NSUserNotificationCenter.default.deliver(notification)
-//        }
+        }
 
         self.meetingInProgress = inProgress
     }

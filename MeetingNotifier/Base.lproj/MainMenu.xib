@@ -10,34 +10,33 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MeetingNotifier" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="O3D-Lb-Rnu" customClass="StatusMenuController" customModule="MeetingNotifier" customModuleProvider="target">
             <connections>
+                <outlet property="meetingBarItem" destination="ko5-sd-aVD" id="g98-Lt-GXW"/>
+                <outlet property="preferencesBarItem" destination="E1C-AO-nkx" id="xFT-KE-Z7N"/>
                 <outlet property="statusBarMenu" destination="gQH-T5-Mb5" id="NyJ-AY-rGP"/>
             </connections>
         </customObject>
         <menu id="gQH-T5-Mb5">
             <items>
-                <menuItem title="Alert of meeting" id="ko5-sd-aVD">
+                <menuItem title="Toggle meeting ON" id="ko5-sd-aVD">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="alertMeetingClicked:" target="O3D-Lb-Rnu" id="BK7-KU-cOD"/>
+                        <action selector="toggleMeetingClicked:" target="O3D-Lb-Rnu" id="BK7-KU-cOD"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="iZV-Ig-xWU"/>
-                <menuItem title="Preferences" id="E1C-AO-nkx">
+                <menuItem title="Preferences" enabled="NO" id="E1C-AO-nkx">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="openPreferences:" target="O3D-Lb-Rnu" id="dd9-YJ-A0F"/>
-                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="IsR-FU-AVy"/>
                 <menuItem title="Quit" id="d0D-HY-Nik">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitApp:" target="O3D-Lb-Rnu" id="WCz-lk-2QH"/>
+                        <action selector="quitApp:" target="O3D-Lb-Rnu" id="XyQ-eF-GMG"/>
                     </connections>
                 </menuItem>
             </items>
